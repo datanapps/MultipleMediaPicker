@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+   package="datanapps.mediapicker">
+
+
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2" android:required="false"/>
+
+
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:appComponentFactory="@string/app_name"
+       >
+        <activity
+            android:name="datanapps.mediapicker.ui.DNAGalleryPickerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name="datanapps.mediapicker.ui.SubMediaGalleryActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+    </application>
+
+</manifest>

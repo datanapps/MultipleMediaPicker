@@ -1,0 +1,17 @@
+<resources tools:ignore="ExtraTranslation" xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">DNA MediaPicker</string>
+
+
+     <string name="camera">Camera</string>
+    <string name="select">select all</string>
+    <string name="image">image</string>
+    <string name="videos">Videos</string>
+    <string name="images">Videos</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Permission  -->
+    <string name="set_permission">Set Permisssion</string>
+    <string name="msg_permission">We can not continue without this permission.</string>
+    <string name="msg_permission_with_settings">We can not continue without this permission so goto settings screen and grant permission.</string>
+
+</resources>

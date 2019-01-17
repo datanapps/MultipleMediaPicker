@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mediaColorPrimary">#3F51B5</color>
+    <color name="mediaColorPrimaryDark">#303F9F</color>
+    <color name="mediaColorAccent">#FFE20000</color>
+    <color name="windowBackground">#000000</color>
+    <color name="titleTextColor">#FFFFFF</color>
+    <color name="titleTabColor">#CECECE</color>
+    <color name="titleSelectedTabColor">#FFFFFF</color>
+</resources>

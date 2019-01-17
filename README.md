@@ -6,6 +6,7 @@ For camera :
 ![alt text](https://github.com/datanapps/MultipleMediaPicker/blob/master/screens/camera_1.gif)
 
 For Multiple media picker All (Camera, camera video, images, videos):
+
 ![alt text](https://github.com/datanapps/MultipleMediaPicker/blob/master/screens/camera_2.gif)
 
 

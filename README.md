@@ -53,7 +53,6 @@ implementation project(':mediapicker')
         }
     }
     
-    
     # Options
     
    1. It can be work for below mode:
@@ -74,8 +73,8 @@ implementation project(':mediapicker')
    
    intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
    
-   2. Its handle marshmallow runtime permission.
-   3. you can set no of selection. default file selection is 5.
+   2.    Its handle marshmallow runtime permission.
+   3.   You can set no of selection. default file selection is 5.
   
     intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); 
    

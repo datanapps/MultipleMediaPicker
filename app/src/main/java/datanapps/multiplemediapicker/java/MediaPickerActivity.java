@@ -56,11 +56,9 @@ public class MediaPickerActivity extends AppCompatActivity {
 
     void openMediaFile() {
         Intent intent = new Intent(this, DNAGalleryPickerActivity.class);
-        // Set the title
-        intent.putExtra(AppConstants.TITLE, AppConstants.TITLE_VALUE);
-        // Mode 1 for both images and videos selection, 2 for images only and 3 for videos!
+
         intent.putExtra(AppConstants.MODE, 1);
-        intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); // Optional
+        //intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); // default 5
         startActivityForResult(intent, AppConstants.OPEN_MEDIA_PICKER);
     }
 

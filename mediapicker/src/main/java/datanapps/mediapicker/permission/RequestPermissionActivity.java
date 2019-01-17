@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -22,14 +21,14 @@ import datanapps.mediapicker.utils.ExceptionHandler;
 
 
 /*
-*
+ *
  *  Yogendra
  *
  * https://github.com/datanapps
  *
- * 10-01-2019 
-* This class is base class of activities for project. All other activities extend this class
-* **/
+ * 10-01-2019
+ * This class is base class of activities for project. All other activities extend this class
+ * **/
 
 public class RequestPermissionActivity extends AppCompatActivity {
     protected PermissionListener permissionListener;
@@ -205,11 +204,10 @@ public class RequestPermissionActivity extends AppCompatActivity {
         }
 
 
-
     }
 
 
-    private  AlertDialog showAlertWithListener(Context context, String message, String positiveBtnText, String negativeBtnText, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
+    private AlertDialog showAlertWithListener(Context context, String message, String positiveBtnText, String negativeBtnText, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
 
         AlertDialog alertDialog;
         AlertDialog.Builder alert = new AlertDialog.Builder(context);

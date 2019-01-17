@@ -28,7 +28,7 @@ import java.util.List;
 
 
 
- /*
+/*
  *  Yogendra
  *
  * https://github.com/datanapps
@@ -38,14 +38,20 @@ import java.util.List;
 public class DNAGalleryPickerActivity extends RequestPermissionActivity {
     private TabLayout tabLayout;
     private ViewPager vpMediaPicker;
-    public static int selectionTitle;
-    public static String title;
+
+
     public static int maxSelection;
     public static int mode;
 
-
+    public static int selectionTitle;
     private String imageFilePath;
 
+
+    private View viewRecordingCamera;
+    private View viewImageCamera;
+
+
+    private  Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +88,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
 
     private void setupBasicsUI() {
         // update tool bar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.arrow_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -91,6 +97,8 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
                 onBackPressed();
             }
         });
+        setTitle(getString(R.string.select_gallery));
+        toolbar.setVisibility(View.INVISIBLE);
 
         findViewById(R.id.activity_gallery_picker_done).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,25 +107,26 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             }
         });
 
-        findViewById(R.id.activity_gallery_picker_video).setOnClickListener(new View.OnClickListener() {
+        viewRecordingCamera = findViewById(R.id.activity_gallery_picker_video);
+
+        viewRecordingCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkCameraPermission(AppConstants.OPEN_VIDEO);
+                checkCameraPermission(AppConstants.OPEN_CAMERA_FOR_VIDEOS);
             }
         });
 
-        findViewById(R.id.activity_gallery_picker_camera).setOnClickListener(new View.OnClickListener() {
+        viewImageCamera = findViewById(R.id.activity_gallery_picker_camera);
+
+        viewImageCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkCameraPermission(AppConstants.OPEN_CAMERA);
+                checkCameraPermission(AppConstants.OPEN_CAMERA_FOR_IMAGE);
             }
         });
 
-        // get value from arguments
-        title = getIntent().getExtras().getString("title");
-        setTitle(title);
 
-        maxSelection = getIntent().getExtras().getInt("maxSelection");
+        maxSelection = getIntent().getExtras().getInt("maxSelection", 5);
 
         if (maxSelection == 0) maxSelection = Integer.MAX_VALUE;
         mode = getIntent().getExtras().getInt("mode");
@@ -125,14 +134,11 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
         selectionTitle = 0;
 
 
-        // prepare viewPage
-        vpMediaPicker = findViewById(R.id.activity_gallery_picker_vp_pager);
-        setupViewPager(vpMediaPicker);
-        tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(vpMediaPicker);
-
+// remove selected media list
         SubMediaGalleryActivity.selected.clear();
         SubMediaGalleryActivity.imagesSelected.clear();
+        // prepare viewPage
+        setupViewPager();
     }
 
     private void checkCameraPermission(final int type) {
@@ -141,7 +147,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             @Override
             public void onPermissionGranted(String permissionName) {
 
-                if (type == AppConstants.OPEN_CAMERA) {
+                if (type == AppConstants.OPEN_CAMERA_FOR_IMAGE) {
                     OpenCameraForImage();
                 } else {
                     OpenCameraForVideo();
@@ -160,7 +166,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             checkRunTimePermissions(permissions);
         } else {
 
-            if (type == AppConstants.OPEN_CAMERA) {
+            if (type == AppConstants.OPEN_CAMERA_FOR_IMAGE) {
                 OpenCameraForImage();
             } else {
                 OpenCameraForVideo();
@@ -207,14 +213,49 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
     }
 
     //This method set up the tab view for images and videos
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager() {
+
+        vpMediaPicker = findViewById(R.id.activity_gallery_picker_vp_pager);
+
+        tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(vpMediaPicker);
         MediaPickerPagerAdapter adapter = new MediaPickerPagerAdapter(getSupportFragmentManager());
-        if (mode == 1 || mode == 2) {
-            adapter.addFragment(new ImageFragment(), getString(R.string.image));
-        }
-        if (mode == 1 || mode == 3)
+
+// for full mode
+        toolbar.setVisibility(View.VISIBLE);
+        if (mode == AppConstants.OPEN_FULL_MODE) {
+            adapter.addFragment(new ImageFragment(), getString(R.string.images));
             adapter.addFragment(new VideoFragment(), getString(R.string.videos));
-        viewPager.setAdapter(adapter);
+
+            viewImageCamera.setVisibility(View.VISIBLE);
+            viewRecordingCamera.setVisibility(View.VISIBLE);
+
+
+        } else if (mode == AppConstants.OPEN_CAMERA_FOR_IMAGE) {
+            // camera only
+            checkCameraPermission(AppConstants.OPEN_CAMERA_FOR_IMAGE);
+            toolbar.setVisibility(View.INVISIBLE);
+        } else if (mode == AppConstants.OPEN_CAMERA_FOR_VIDEOS) {
+            // videos
+            checkCameraPermission(AppConstants.OPEN_CAMERA_FOR_VIDEOS);
+            toolbar.setVisibility(View.INVISIBLE);
+        }
+        // for image tab
+        else if (mode == AppConstants.OPEN_GALLERY_IMAGE || mode == AppConstants.OPEN_GALLERY_IMAGES_VIDEOS) {
+            //
+            adapter.addFragment(new ImageFragment(), getString(R.string.images));
+
+            viewImageCamera.setVisibility(View.GONE);
+            viewRecordingCamera.setVisibility(View.GONE);
+        }
+        if (mode == AppConstants.OPEN_GALLERY_VIDEOS || mode == AppConstants.OPEN_GALLERY_IMAGES_VIDEOS) {
+            adapter.addFragment(new VideoFragment(), getString(R.string.videos));
+            viewImageCamera.setVisibility(View.GONE);
+            viewRecordingCamera.setVisibility(View.GONE);
+        }
+
+
+        vpMediaPicker.setAdapter(adapter);
     }
 
     class MediaPickerPagerAdapter extends FragmentPagerAdapter {
@@ -279,11 +320,17 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
                 SubMediaGalleryActivity.imagesSelected.add(imageFilePath);
                 setResultAndFinish();
             }
+            else{
+                finish();
+            }
         } else if (requestCode == AppConstants.OPEN_CAMERA_PICKER_VIDEO) {
             // Make sure the request was successful
             if (resultCode == Activity.RESULT_OK) {
                 SubMediaGalleryActivity.imagesSelected.add(imageFilePath);
                 setResultAndFinish();
+            }
+            else{
+                finish();
             }
         }
     }

@@ -50,7 +50,7 @@ public class SubMediaGalleryActivity extends AppCompatActivity {
 
 
         toolbar.setNavigationIcon(R.drawable.arrow_back);
-        setTitle(DNAGalleryPickerActivity.title);
+        setTitle(getString(R.string.select_gallery));
         if (imagesSelected.size() > 0) {
             setTitle(String.valueOf(imagesSelected.size()));
         }
@@ -106,7 +106,7 @@ public class SubMediaGalleryActivity extends AppCompatActivity {
                 if (imagesSelected.size() != 0) {
                     setTitle(String.valueOf(imagesSelected.size()+"/"+ DNAGalleryPickerActivity.maxSelection));
                 } else {
-                    setTitle(DNAGalleryPickerActivity.title);
+                    setTitle(getString(R.string.select_gallery));
                 }
             }
 

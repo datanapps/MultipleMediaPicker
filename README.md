@@ -27,12 +27,14 @@ implementation project(':mediapicker')
 
 3. Call below method at your button tap.
 
- void openDNAMediaPicker() {
-        Intent intent = new Intent(this, DNAGalleryPickerActivity.class);
+
+
+       void openDNAMediaPicker() {
+        Intent intent = new Intent(this, DNAGalleryPickerActivity.class);  
         intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
         intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); // default 5
         startActivityForResult(intent, AppConstants.OPEN_MEDIA_PICKER);
-    }
+}
     
     
     4. To Received MediaFile override activity result:
@@ -53,4 +55,27 @@ implementation project(':mediapicker')
         }
     }
     
+    
+    # Options
+    
+   1. It can be work for below mode:
+   
+    public static int OPEN_CAMERA_FOR_IMAGE = 1; // only camera for image
+    public static int OPEN_CAMERA_FOR_VIDEOS = 2; // only camera for recording
+    public static int OPEN_GALLERY_IMAGE = 3; // only select image from gallery
+    public static int OPEN_GALLERY_VIDEOS = 4; // only select videos from gallery
+    public static int OPEN_GALLERY_IMAGES_VIDEOS = 5; // only image and videos both
+    public static int OPEN_FULL_MODE = 6; // camera for image, camera for video, gallery_images, gallery videos
+   
+   intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
+   
+   2. Its handle marshmallow runtime permission.
+   3. you can set no of selection. default file selection is 5.
+  
+    intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); 
+   
+   
+    
+    
+    https://github.com/datanapps/MultipleMediaPicker/blob/master/LICENSE
     

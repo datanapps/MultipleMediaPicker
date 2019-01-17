@@ -133,6 +133,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/mediapicker/src/main/java/datanapps/mediapicker/permission/PermissionListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/mediapicker/src/main/java/datanapps/mediapicker/permission/RequestPermissionActivity.java">
           <value>
             <set />

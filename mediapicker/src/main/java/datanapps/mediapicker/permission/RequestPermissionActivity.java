@@ -23,6 +23,11 @@ import datanapps.mediapicker.utils.ExceptionHandler;
 
 /*
 *
+ *  Yogendra
+ *
+ * https://github.com/datanapps
+ *
+ * 10-01-2019 
 * This class is base class of activities for project. All other activities extend this class
 * **/
 

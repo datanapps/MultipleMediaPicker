@@ -42,8 +42,7 @@ implementation project(':mediapicker')
     @Override
     
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-   
-        // Check which request we're responding to
+  
         if (requestCode == AppConstants.OPEN_MEDIA_PICKER) {
             // Make sure the request was successful
             if (resultCode == Activity.RESULT_OK && data != null) {

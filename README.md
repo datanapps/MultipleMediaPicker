@@ -1,5 +1,5 @@
 # MultipleMediaPicker
-A complete AndroidMultipleMediaPicker with Marshmallow Permission handling, record a video from camera, Capture Image from camera, multiple image and multiple video picker from gallery in one module
+A complete AndroidMultipleMediaPicker with Marshmallow Permission handling, record a video from camera, capture an image from camera, select multiple images and multiple videos from gallery in one module.
 
 For camera :
 
@@ -18,7 +18,7 @@ For Multiple media picker All (Camera, camera video, images, videos):
 
 # How To Use 
 
-1. Copy mediapicker in your application as module.
+1. Copy mediapicker (module folder) in your application as module.
 
 2. Add module in your application build file.
 
@@ -34,7 +34,8 @@ implementation project(':mediapicker')
         intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
         intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); // default 5
         startActivityForResult(intent, AppConstants.OPEN_MEDIA_PICKER);
-}
+        }
+
     
     
     4. To Received MediaFile override activity result:

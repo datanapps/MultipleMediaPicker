@@ -51,7 +51,8 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
     private View viewImageCamera;
 
 
-    private  Toolbar toolbar;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,12 +126,13 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             }
         });
 
-
-        maxSelection = getIntent().getExtras().getInt("maxSelection", 5);
-
-        if (maxSelection == 0) maxSelection = Integer.MAX_VALUE;
-        mode = getIntent().getExtras().getInt("mode");
-
+        if (getIntent().getExtras() != null) {
+            maxSelection = getIntent().getExtras().getInt("maxSelection", 5);
+            mode = getIntent().getExtras().getInt("mode", AppConstants.OPEN_FULL_MODE);
+        }else{
+            maxSelection = 5;
+            mode =  AppConstants.OPEN_FULL_MODE;
+        }
         selectionTitle = 0;
 
 
@@ -319,8 +321,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             if (resultCode == Activity.RESULT_OK) {
                 SubMediaGalleryActivity.imagesSelected.add(imageFilePath);
                 setResultAndFinish();
-            }
-            else{
+            } else {
                 finish();
             }
         } else if (requestCode == AppConstants.OPEN_CAMERA_PICKER_VIDEO) {
@@ -328,8 +329,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             if (resultCode == Activity.RESULT_OK) {
                 SubMediaGalleryActivity.imagesSelected.add(imageFilePath);
                 setResultAndFinish();
-            }
-            else{
+            } else {
                 finish();
             }
         }

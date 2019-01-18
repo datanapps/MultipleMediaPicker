@@ -1,6 +1,40 @@
 # MultipleMediaPicker
 A complete AndroidMultipleMediaPicker with Marshmallow Permission handling, record a video from camera, capture an image from camera, select multiple images and multiple videos from gallery in one module.
 
+This repository provide below options:
+
+1. If you want to open camera for image pass value type value in intent.
+
+ public static int OPEN_CAMERA_FOR_IMAGE = 1; // only camera for image
+ 
+ 2. If you want to open camera to record video pass value type value in intent.
+ 
+   
+    public static int OPEN_CAMERA_FOR_VIDEOS = 2; // only camera for recording
+    
+    3. If you want to open only image selection pass below mode
+    
+    public static int OPEN_GALLERY_IMAGE = 3; // only select image from gallery
+    
+    4. If you want to open only Videos selection pass below mode
+    
+    public static int OPEN_GALLERY_VIDEOS = 4; // only select videos from gallery
+    
+    5. If you want to open Image and Videos both at same time, pass below mode
+    
+    public static int OPEN_GALLERY_IMAGES_VIDEOS = 5; // only image and videos both
+    
+    6. If you want full mode like camera for image, camera for videos, image selection, gallery selection.
+    
+    
+    public static int OPEN_FULL_MODE = 6; // camera for image, camera for video, gallery_images, gallery videos
+   
+   
+   
+   intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
+
+
+
 For camera :
 
 ![alt text](https://github.com/datanapps/MultipleMediaPicker/blob/master/screens/camera_1.gif)

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,8 +40,6 @@ import java.util.List;
  * */
 public class ImageFragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
-    private CategorizedMediaAdapter categorizedMediaAdapter;
-
 
     private List<String> bucketNames = new ArrayList<>();
     private List<String> bitmapList = new ArrayList<>();
@@ -68,7 +67,7 @@ public class ImageFragment extends android.support.v4.app.Fragment {
     }
 
     private void populateRecyclerView() {
-        categorizedMediaAdapter = new CategorizedMediaAdapter(bucketNames, bitmapList, getContext());
+        CategorizedMediaAdapter categorizedMediaAdapter = new CategorizedMediaAdapter(bucketNames, bitmapList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -90,6 +89,10 @@ public class ImageFragment extends android.support.v4.app.Fragment {
         categorizedMediaAdapter.notifyDataSetChanged();
     }
 
+    /*
+    *
+    * Get bucket name
+    * */
     public void getPicBuckets() {
         Cursor cursor = getContext().getContentResolver()
                 .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, AppConstants.projectionBucket,
@@ -167,12 +170,12 @@ public class ImageFragment extends android.support.v4.app.Fragment {
             this.clickListener = clickListener;
             gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 @Override
-                public boolean onSingleTapUp(MotionEvent e) {
+                public boolean onSingleTapUp(@NonNull MotionEvent e) {
                     return true;
                 }
 
                 @Override
-                public void onLongPress(MotionEvent e) {
+                public void onLongPress(@NonNull MotionEvent e) {
                     View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
                     if (child != null && clickListener != null) {
                         clickListener.onLongClick(child, recyclerView.getChildPosition(child));
@@ -182,7 +185,7 @@ public class ImageFragment extends android.support.v4.app.Fragment {
         }
 
         @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, MotionEvent e) {
             View child = rv.findChildViewUnder(e.getX(), e.getY());
             if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
                 clickListener.onClick(child, rv.getChildPosition(child));
@@ -191,12 +194,13 @@ public class ImageFragment extends android.support.v4.app.Fragment {
         }
 
         @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        public void onTouchEvent(@NonNull RecyclerView rv,@NonNull MotionEvent e) {
+        // nothing to do here
         }
 
         @Override
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
+// nothing to do here
         }
     }
 

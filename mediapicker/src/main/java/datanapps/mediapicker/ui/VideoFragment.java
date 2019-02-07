@@ -40,7 +40,6 @@ import java.util.List;
 
 public class VideoFragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
-    private CategorizedMediaAdapter mAdapter;
     private List<String> bucketNames= new ArrayList<>();
     private List<String> bitmapList=new ArrayList<>();
     private final String[] projection = new String[]{ MediaStore.Video.Media.BUCKET_DISPLAY_NAME, MediaStore.Video.Media.DATA };
@@ -70,11 +69,11 @@ public class VideoFragment extends android.support.v4.app.Fragment {
     }
 
     private void populateRecyclerView() {
-        mAdapter = new CategorizedMediaAdapter(bucketNames,bitmapList,getContext());
+        CategorizedMediaAdapter categorizedMediaAdapter = new CategorizedMediaAdapter(bucketNames,bitmapList,getContext());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(),3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(categorizedMediaAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -89,7 +88,7 @@ public class VideoFragment extends android.support.v4.app.Fragment {
 
             }
         }));
-        mAdapter.notifyDataSetChanged();
+        categorizedMediaAdapter.notifyDataSetChanged();
     }
 
     public void getVideos(String bucket){

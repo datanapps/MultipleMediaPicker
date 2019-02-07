@@ -7,10 +7,6 @@ public class AppConstants {
 
     public static String RESULT = "result";
 
-    public static String TITLE = "title";
-
-    public static String TITLE_VALUE = "Select Gallery";
-
     public static String MODE = "mode";
 
     public static String MAX_SELECTION = "maxSelection";

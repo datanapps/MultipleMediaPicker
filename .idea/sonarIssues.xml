@@ -13,6 +13,31 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../AndroidUtility/app/src/main/java/datanapps/androidutility/KotlinMainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../AndroidUtility/app/src/main/java/datanapps/androidutility/MainActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../AndroidUtility/app/src/main/java/datanapps/androidutility/utils/java/DNAExceptionHandler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../AndroidUtility/app/src/main/java/datanapps/androidutility/utils/kotlin/DNAExceptionHandler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../AndroidUtility/app/src/main/java/datanapps/androidutility/utils/kotlin/DNAExceptionHandler.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
@@ -219,6 +244,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/mediapicker/src/main/res/layout/content_open_gallery.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/mediapicker/src/main/res/layout/layout_album_item.xml">
           <value>
             <set />
           </value>

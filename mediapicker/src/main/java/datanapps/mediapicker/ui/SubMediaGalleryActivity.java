@@ -23,6 +23,8 @@ import java.util.List;
  * https://github.com/datanapps
  *
  * 10-01-2019 */
+
+
 public class SubMediaGalleryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private GalleryMediaAdapter mAdapter;

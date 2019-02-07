@@ -29,16 +29,6 @@ public class GalleryMediaAdapter extends RecyclerView.Adapter<GalleryMediaAdapte
     private List<Boolean> selected;
     private Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView thumbnail,check;
-
-        public MyViewHolder(View view) {
-            super(view);
-            thumbnail=(ImageView) view.findViewById(R.id.image);
-            check=(ImageView) view.findViewById(R.id.image2);
-        }
-    }
-
     public GalleryMediaAdapter(List<String> bitmapList, List<Boolean> selected, Context context) {
         this.bitmapList = bitmapList;
         this.context=context;
@@ -56,10 +46,10 @@ public class GalleryMediaAdapter extends RecyclerView.Adapter<GalleryMediaAdapte
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Glide.with(context).load("file://"+bitmapList.get(position)).apply(new RequestOptions().override(153,160).centerCrop().dontAnimate().skipMemoryCache(true)).transition(withCrossFade()).into(holder.thumbnail);
         if(selected.get(position).equals(true)){
-            holder.check.setVisibility(View.VISIBLE);
-            holder.check.setAlpha(150);
+            holder.imgChecked.setVisibility(View.VISIBLE);
+            holder.imgChecked.setAlpha(150);
         }else{
-            holder.check.setVisibility(View.GONE);
+            holder.imgChecked.setVisibility(View.GONE);
         }
 
     }
@@ -67,6 +57,17 @@ public class GalleryMediaAdapter extends RecyclerView.Adapter<GalleryMediaAdapte
     @Override
    public int getItemCount() {
         return bitmapList.size();
+    }
+
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public ImageView thumbnail,imgChecked;
+
+        public MyViewHolder(View view) {
+            super(view);
+            thumbnail= view.findViewById(R.id.layout_media_item_image);
+            imgChecked= view.findViewById(R.id.layout_media_item_checked);
+        }
     }
 }
 

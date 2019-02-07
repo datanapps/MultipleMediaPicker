@@ -39,7 +39,7 @@ import java.util.List;
  * */
 public class ImageFragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
-    private CategorizedMediaAdapter mAdapter;
+    private CategorizedMediaAdapter categorizedMediaAdapter;
 
 
     private List<String> bucketNames = new ArrayList<>();
@@ -68,11 +68,11 @@ public class ImageFragment extends android.support.v4.app.Fragment {
     }
 
     private void populateRecyclerView() {
-        mAdapter = new CategorizedMediaAdapter(bucketNames, bitmapList, getContext());
+        categorizedMediaAdapter = new CategorizedMediaAdapter(bucketNames, bitmapList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(categorizedMediaAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -87,7 +87,7 @@ public class ImageFragment extends android.support.v4.app.Fragment {
 
             }
         }));
-        mAdapter.notifyDataSetChanged();
+        categorizedMediaAdapter.notifyDataSetChanged();
     }
 
     public void getPicBuckets() {

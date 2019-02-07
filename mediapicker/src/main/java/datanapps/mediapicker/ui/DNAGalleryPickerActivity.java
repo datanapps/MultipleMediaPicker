@@ -36,8 +36,8 @@ import java.util.List;
  * 10-01-2019 */
 
 public class DNAGalleryPickerActivity extends RequestPermissionActivity {
-    private TabLayout tabLayout;
-    private ViewPager vpMediaPicker;
+   // private TabLayout tabLayout;
+   // private ViewPager vpMediaPicker;
 
 
     public static int maxSelection;
@@ -217,9 +217,9 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
     //This method set up the tab view for images and videos
     private void setupViewPager() {
 
-        vpMediaPicker = findViewById(R.id.activity_gallery_picker_vp_pager);
+        ViewPager vpMediaPicker = findViewById(R.id.activity_gallery_picker_vp_pager);
 
-        tabLayout = findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(vpMediaPicker);
         MediaPickerPagerAdapter adapter = new MediaPickerPagerAdapter(getSupportFragmentManager());
 

@@ -5,13 +5,13 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/layout_media_item_image"
         android:layout_width="match_parent"
         android:contentDescription="@string/images"
         android:layout_height="match_parent" />
 
     <ImageView
-        android:id="@+id/image2"
+        android:id="@+id/layout_media_item_checked"
         android:src="@drawable/logomakr_1"
         android:scaleType="fitXY"
         android:visibility="gone"

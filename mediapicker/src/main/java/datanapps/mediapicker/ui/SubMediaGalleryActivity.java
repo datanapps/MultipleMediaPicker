@@ -2,6 +2,7 @@ package datanapps.mediapicker.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -114,7 +115,7 @@ public class SubMediaGalleryActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(View view, int position) {
-
+// nothing to do here
             }
 
         }));
@@ -149,7 +150,7 @@ public class SubMediaGalleryActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             View child = rv.findChildViewUnder(e.getX(), e.getY());
             if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
                 clickListener.onClick(child, rv.getChildPosition(child));
@@ -158,11 +159,13 @@ public class SubMediaGalleryActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        public void onTouchEvent(@NonNull  RecyclerView rv, @NonNull MotionEvent e) {
+            // nothing to do here
         }
 
         @Override
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            // nothing to do here
         }
     }
 

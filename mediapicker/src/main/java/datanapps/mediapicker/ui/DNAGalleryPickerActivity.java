@@ -264,7 +264,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
         private final ArrayList<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public MediaPickerPagerAdapter(FragmentManager manager) {
+        private MediaPickerPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -278,7 +278,7 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        private void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
@@ -299,12 +299,12 @@ public class DNAGalleryPickerActivity extends RequestPermissionActivity {
 
     public static File createImageFile(File dir, String suffix) {
         try {
-            File image = File.createTempFile(
+            return File.createTempFile(
                     "IMG_" + System.currentTimeMillis(),  /* prefix */
                     suffix,         /* suffix */
                     dir     /* directory */
             );
-            return image;
+
         } catch (Exception e) {
             ExceptionHandler.handleException(e);
         }

@@ -7,4 +7,5 @@
     <color name="titleTextColor">#FFFFFF</color>
     <color name="titleTabColor">#CECECE</color>
     <color name="titleSelectedTabColor">#FFFFFF</color>
+    <color name="light_grey_color">#F2F2F2</color>
 </resources>

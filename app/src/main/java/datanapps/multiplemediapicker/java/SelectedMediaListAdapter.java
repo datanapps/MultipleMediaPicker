@@ -8,18 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-
 import com.bumptech.glide.request.RequestOptions;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import datanapps.multiplemediapicker.R;
-
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
+
+/*
+*
+* this is adapter to display selected media file
+*
+* */
 public class SelectedMediaListAdapter extends RecyclerView.Adapter<SelectedMediaListAdapter.ViewHolder> {
 
     private List<String> mediaList = new ArrayList<>();
@@ -71,16 +71,13 @@ public class SelectedMediaListAdapter extends RecyclerView.Adapter<SelectedMedia
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @Nullable
-        //@BindView(R.id.selected_image)
         ImageView imageView;
 
         @Nullable
-        //@BindView(R.id.icon_video)
         ImageView videoIcon;
 
         ViewHolder(View itemView) {
             super(itemView);
-            //ButterKnife.bind(this, itemView);
             videoIcon = itemView.findViewById(R.id.icon_video);
             imageView= itemView.findViewById(R.id.selected_image);
         }

@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
-
 import datanapps.mediapicker.utils.AppConstants;
 import datanapps.mediapicker.ui.DNAGalleryPickerActivity;
 
@@ -18,15 +16,24 @@ import java.util.List;
 
 import datanapps.multiplemediapicker.R;
 
+
+/*
+* This is main screen which is need to select media from gallery
+*
+* */
 public class MediaPickerActivity extends AppCompatActivity {
 
 
+    /*
+    * List of selected media path list
+    * */
     private List<String> selectedMedia;
 
-
-    RecyclerView recyclerView;
-
-
+    /*
+    *
+    * Recycle view which will display images and video after selected
+    * */
+    private RecyclerView recyclerView;
     private SelectedMediaListAdapter selectedMediaListAdapter;
 
     @Override
@@ -35,6 +42,10 @@ public class MediaPickerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_media_picker);
         selectedMedia = new ArrayList<>();
 
+
+        /*
+        * Click button to open gallery
+        * */
         findViewById(R.id.activity_media_picker_select_image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +64,11 @@ public class MediaPickerActivity extends AppCompatActivity {
         recyclerView.setAdapter(selectedMediaListAdapter);
     }
 
+
+    /*
+    * Open media gallery
+    *
+    * */
 
     void openMediaFile() {
         Intent intent = new Intent(this, DNAGalleryPickerActivity.class);
@@ -79,6 +95,11 @@ public class MediaPickerActivity extends AppCompatActivity {
         }
     }
 
+
+    /*
+    *
+    * this update selected media path in adapter to refresh selected media list
+    * */
     private void updateImageList() {
         selectedMediaListAdapter.setMediaList(selectedMedia);
     }

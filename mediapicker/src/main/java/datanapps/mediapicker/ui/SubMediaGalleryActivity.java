@@ -13,6 +13,7 @@ import android.view.View;
 
 import datanapps.mediapicker.ui.adapters.GalleryMediaAdapter;
 import datanapps.mediapicker.R;
+import datanapps.mediapicker.utils.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +87,9 @@ public class SubMediaGalleryActivity extends AppCompatActivity {
                 selected.set(i, false);
             }
         }
+        int noOfColumns = Utility.calculateNoOfColumns(this);
         mAdapter = new GalleryMediaAdapter(mediaList, selected, getApplicationContext());
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), noOfColumns);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.getItemAnimator().setChangeDuration(0);
         recyclerView.setAdapter(mAdapter);

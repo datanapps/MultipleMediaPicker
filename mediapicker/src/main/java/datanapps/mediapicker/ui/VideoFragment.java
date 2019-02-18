@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import datanapps.mediapicker.ui.adapters.CategorizedMediaAdapter;
 import datanapps.mediapicker.R;
+import datanapps.mediapicker.utils.Utility;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -70,7 +71,9 @@ public class VideoFragment extends android.support.v4.app.Fragment {
 
     private void populateRecyclerView() {
         CategorizedMediaAdapter categorizedMediaAdapter = new CategorizedMediaAdapter(bucketNames,bitmapList,getContext());
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(),3);
+
+        int noOfColumns = Utility.calculateNoOfColumns(getContext());
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(),noOfColumns);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(categorizedMediaAdapter);

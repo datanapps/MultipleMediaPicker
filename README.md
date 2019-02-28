@@ -108,12 +108,13 @@ implementation project(':mediapicker')
    
     intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
    
-   **2.    Its handle marshmallow runtime permission.**
+   **2. Its handle marshmallow runtime permission.**
    
-   **3.   You can set no of selection. default file selection is 5. **
+   **3. You can set no of selection. default file selection is 5.**
   
     intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); 
    
     
-    https://github.com/datanapps/MultipleMediaPicker/blob/master/LICENSE
+    
+  https://github.com/datanapps/MultipleMediaPicker/blob/master/LICENSE
     

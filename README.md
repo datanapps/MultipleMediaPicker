@@ -1,30 +1,30 @@
 # MultipleMediaPicker
-A complete AndroidMultipleMediaPicker with Marshmallow Permission handling, record a video from camera, capture an image from camera, select multiple images and multiple videos from gallery in one module.
+A complete **AndroidMultipleMediaPicker** with Marshmallow Permission handling, record a video from camera, capture an image from camera, select multiple images and multiple videos from gallery in one module.
 
 This repository provide below options:
 
-1. If you want to open camera for image pass value type value in intent.
+######1. If you want to open camera for image pass value type value in intent.
 
  public static int OPEN_CAMERA_FOR_IMAGE = 1; // only camera for image
  
- 2. If you want to open camera to record video pass value type value in intent.
+###### 2. If you want to open camera to record video pass value type value in intent.
  
    
   public static int OPEN_CAMERA_FOR_VIDEOS = 2; // only camera for recording
     
- 3. If you want to open only image selection pass below mode
+###### 3. If you want to open only image selection pass below mode
     
     public static int OPEN_GALLERY_IMAGE = 3; // only select image from gallery
     
- 4. If you want to open only Videos selection pass below mode
+ ######4. If you want to open only Videos selection pass below mode
     
     public static int OPEN_GALLERY_VIDEOS = 4; // only select videos from gallery
     
- 5. If you want to open Image and Videos both at same time, pass below mode
+###### 5. If you want to open Image and Videos both at same time, pass below mode
     
     public static int OPEN_GALLERY_IMAGES_VIDEOS = 5; // only image and videos both
     
- 6. If you want full mode like camera for image, camera for videos, image selection, gallery selection.
+###### 6. If you want full mode like camera for image, camera for videos, image selection, gallery selection.
     
     
     public static int OPEN_FULL_MODE = 6; // camera for image, camera for video, gallery_images, gallery videos
@@ -35,7 +35,7 @@ This repository provide below options:
 
 
 
-For camera :
+##For camera :
 
 ![alt text](https://github.com/datanapps/MultipleMediaPicker/blob/master/screens/camera_1.gif)
 
@@ -50,16 +50,16 @@ For Multiple media picker All (Camera, camera video, images, videos):
 ![alt text](https://github.com/datanapps/MultipleMediaPicker/blob/master/screens/camera_4.gif)
 
 
-# How To Use 
+## How To Use 
 
-1. Copy mediapicker (module folder) in your application as module.
+**1. Copy mediapicker (module folder) in your application as module.**
 
-2. Add module in your application build file.
+**2. Add module in your application build file.**
 
 implementation project(':mediapicker')
 
 
-3. Call below method at your button tap.
+**3. Call below method at your button tap.**
 
 
 
@@ -70,29 +70,27 @@ implementation project(':mediapicker')
         startActivityForResult(intent, AppConstants.OPEN_MEDIA_PICKER);
         }
       
-    4. To Received MediaFile override activity result:
+   **4. To Received MediaFile override activity result:**
     
+           @Override
+           public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+           if (requestCode == AppConstants.OPEN_MEDIA_PICKER) {
+               // Make sure the request was successful
+               if (resultCode == Activity.RESULT_OK && data != null) {
+                   List<String> path = data.getStringArrayListExtra(AppConstants.RESULT);
+                   if (path != null) {
+                       selectedMedia.clear();
+                       selectedMedia.addAll(path);
+                       updateImageList();
+                   }
+               }
+           }
+       }
     
-    @Override
+   ## Options
     
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-  
-        if (requestCode == AppConstants.OPEN_MEDIA_PICKER) {
-            // Make sure the request was successful
-            if (resultCode == Activity.RESULT_OK && data != null) {
-                List<String> path = data.getStringArrayListExtra(AppConstants.RESULT);
-                if (path != null) {
-                    selectedMedia.clear();
-                    selectedMedia.addAll(path);
-                    updateImageList();
-                }
-            }
-        }
-    }
-    
-    # Options
-    
-   1. It can be work for below mode:
+   **1. It can be work for below mode:**
    
     public static int OPEN_CAMERA_FOR_IMAGE = 1; // only camera for image
     
@@ -108,15 +106,13 @@ implementation project(':mediapicker')
    
    
    
-   intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
+    intent.putExtra(AppConstants.MODE, AppConstants.OPEN_FULL_MODE);
    
-   2.    Its handle marshmallow runtime permission.
-   3.   You can set no of selection. default file selection is 5.
+   **2.    Its handle marshmallow runtime permission.**
+   **3.   You can set no of selection. default file selection is 5. **
   
     intent.putExtra(AppConstants.MAX_SELECTION, AppConstants.MAX_MEDIA_COUNT); 
    
-   
-    
     
     https://github.com/datanapps/MultipleMediaPicker/blob/master/LICENSE
     

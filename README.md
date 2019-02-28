@@ -3,7 +3,7 @@ A complete **AndroidMultipleMediaPicker** with Marshmallow Permission handling, 
 
 This repository provide below options:
 
-######1. If you want to open camera for image pass value type value in intent.
+###### 1. If you want to open camera for image pass value type value in intent.
 
  public static int OPEN_CAMERA_FOR_IMAGE = 1; // only camera for image
  
@@ -16,7 +16,7 @@ This repository provide below options:
     
     public static int OPEN_GALLERY_IMAGE = 3; // only select image from gallery
     
- ######4. If you want to open only Videos selection pass below mode
+ ###### 4. If you want to open only Videos selection pass below mode
     
     public static int OPEN_GALLERY_VIDEOS = 4; // only select videos from gallery
     
@@ -35,7 +35,7 @@ This repository provide below options:
 
 
 
-##For camera :
+## For camera :
 
 ![alt text](https://github.com/datanapps/MultipleMediaPicker/blob/master/screens/camera_1.gif)
 
